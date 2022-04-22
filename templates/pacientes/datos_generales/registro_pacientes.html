@@ -11,6 +11,12 @@
 <input type="button" value="Regresar al Inicio" onclick="location.href='{% url 'pacientes:datos_generales:inicio' %}'">
 
 <div>
+    <div >
+        <label class="asd">Prueba</label>
+        <input type="text">
+    </div>
+    
+
     <form method="POST">{% csrf_token %}
         <div>
             <label>Codigo:
