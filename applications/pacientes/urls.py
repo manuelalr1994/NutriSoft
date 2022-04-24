@@ -1,9 +1,14 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from .views import *
 
 app_name = 'pacientes'
 
+# Establecemos las URL de esta view
 urlpatterns = [
-    path('datos-generales/', include('applications.pacientes.datos_generales.urls', namespace='datos_generales')),
-    path('', include('applications.pacientes.mediciones.urls', namespace='mediciones')),
+    path('prueba/', PruebaView.as_view(), name='prueba'),
+    path('inicio/', InicioView.as_view(), name='inicio'),
+    path('registro-pacientes/', RegistrarPacientes.as_view(), name='registro_pacientes'),
+    path('registrado-pacientes/', RegistradoPacientes.as_view(), name='registrado_pacientes'),
+    path('lista-pacientes/', ListaPacientes.as_view(), name='lista_pacientes'),
 ]

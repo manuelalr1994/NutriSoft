@@ -6,11 +6,8 @@
 
 {% block cuerpo %}
 
-<h1 class="h1">NutrSoft - Inicio</h1>
-
-<div>
-    <input type="button" value="Mis Pacientes" onclick="location.href='{% url 'pacientes:datos_generales:lista_pacientes' %}'">
-    <input type="button" value="Agregar Nuevo Paciente" onclick="location.href='{% url 'pacientes:datos_generales:registro_pacientes' %}'">
+<div class="titulo_pagina">
+    <h1>NutrSoft - Inicio</h1>
 </div>
 
 {% endblock cuerpo %}

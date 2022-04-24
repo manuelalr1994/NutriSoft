@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Registro del Paciente | NutriSoft {% endblock title %}
+
+{% block cuerpo %}
+
+<div class="titulo_pagina">
+    <h1>Registrar Paciente</h1>
+</div>
+
+<input type="button" value="Regresar" onclick="location.href='{% url 'pacientes:lista_pacientes' %}'">
+<input type="button" value="Regresar al Inicio" onclick="location.href='{% url 'pacientes:inicio' %}'">
+
+<div>
+    <form method="POST">{% csrf_token %}
+        <div>
+            <label>Codigo:
+                {{form.codigo}}
+            </label>
+        </div>
+        <div>
+            <label>Nombre:
+                {{form.nombre}}
+            </label>
+        </div>
+        <div>
+            <label>Email:
+                {{form.email}}
+            </label>
+        </div>
+        <div>
+            <label>Sexo:
+                {{form.sexo}}
+            </label>
+        </div>
+        <div>
+            <label>Fecha de Nacimiento:
+                {{form.fecha_nacimiento}}
+            </label>
+        </div>
+        <div>
+            <label>Escolaridad:
+                {{form.escolaridad}}
+            </label>
+        </div>
+        <div>
+            <label>Tipo de Sangre:
+                {{form.tipo_sangre}}
+            </label>
+        </div>
+        <div>
+            <label>Estado Civil:
+                {{form.estado_civil}}
+            </label>
+        </div>
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock cuerpo %}

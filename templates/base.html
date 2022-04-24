@@ -14,26 +14,19 @@
 
 </head>
 
-<body class="porcentaje">
+<body>
     <header class="nav-principal">
         <nav class="menu">
             <ul>
-                <li>
-                    <a href="#">Inicio</a>
-                </li>
+                <li><a onclick="location.href='{% url 'pacientes:inicio' %}'">Inicio</a></li>
                 <li class="catalogs">
                     <a href="#" class="disable-select">Pacientes</a>
                     <ul class="barra_desplegable disable-select">
-                        <li><a href="#">Datos Generales</a></li>
-                            <a href="#" class="disable-select">Pacientes</a>
-                            <ul class="barra_desplegable disable-select">
-                                <li><a href="#">Lista de Pacientes</a></li>
-                            </ul>
-                        <li><a href="#">Otro Elemento</a></li>
-                        <li><a href="#">Otro Elemento</a></li>
+                        <li><a onclick="location.href='{% url 'pacientes:registro_pacientes' %}'">Agregar Paciente</a></li>
+                        <li><a onclick="location.href='{% url 'pacientes:lista_pacientes' %}'">Lista de Pacientes</a></li>
                     </ul>
                 </li>
-                <li class="process disable-select"><a href="#">Calculo Dietetico</a>
+                <li class="process disable-select"><a href="#">Calculos</a>
                     <ul class="barra_desplegable disable-select">
                         <li><a href="#">Elemento 1</a></li>
                         <li><a href="#">Elemento 2</a></li>
@@ -51,6 +44,10 @@
 
 
     {% block cuerpo %} {% endblock cuerpo %}
+
+    <div class="caja_img_fondo">
+        <img src= {% static 'img/GSMO2.png' %} class="img_fondo">
+    </div>
 
     <footer>
         <p>© NutriSoft 2022. Todos los Derechos Reservados.</p>
