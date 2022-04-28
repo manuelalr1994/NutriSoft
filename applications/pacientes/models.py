@@ -14,6 +14,7 @@ class Pacientes(models.Model):
 
     class Meta:
         verbose_name = 'Mis Pacientes'
+        ordering = ['codigo']
         verbose_name_plural = 'Lista de Pacientes'
 
     def __str__(self):

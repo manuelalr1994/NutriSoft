@@ -15,43 +15,34 @@
 </head>
 
 <body>
-    <header class="nav-principal">
-        <nav class="menu">
-            <ul>
-                <li><a onclick="location.href='{% url 'pacientes:inicio' %}'">Inicio</a></li>
-                <li class="catalogs">
-                    <a href="#" class="disable-select">Pacientes</a>
-                    <ul class="barra_desplegable disable-select">
-                        <li><a onclick="location.href='{% url 'pacientes:registro_pacientes' %}'">Agregar Paciente</a></li>
-                        <li><a onclick="location.href='{% url 'pacientes:lista_pacientes' %}'">Lista de Pacientes</a></li>
-                    </ul>
-                </li>
-                <li class="process disable-select"><a href="#">Calculos</a>
-                    <ul class="barra_desplegable disable-select">
-                        <li><a href="#">Elemento 1</a></li>
-                        <li><a href="#">Elemento 2</a></li>
-                    </ul>
-                </li>
-                <li class="queries disable-select"><a href="#">Otro Elemento</a></li>
-                <li class="queries disable-select"><a href="#">Otro Elemento</a></li>
-                <li class="queries disable-select"><a href="#">Otro Elemento</a></li>
-            </ul>
-        </nav>
+      
+    <div id="sidebar">
+      <div class="toggle-btn">
+        <span>&#9776</span>
+      </div>
+      <ul>
+        <li>
+          <img src={% static "img/logo.png" %} alt="Logo NutriSoft" class="logo">
+        </li>
+        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:inicio' %}'" class="disable-select">Inicio</a></li>
+        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:lista_pacientes' %}'" class="disable-select">Pacientes</a></li>
+        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:registro_pacientes' %}'" class="disable-select">Registrar</a></li>
+        <li class="catalogs"><a href="#" class="disable-select">Cálculos</a></li>
+        <li class="catalogs"><a href="#" class="disable-select">Mis Dietas</a></li>
+        <li class="catalogs"><a href="#" class="disable-select">Salir</a></li>
+      </ul>
+    </div>
 
-        <div class="nomin"></div>
-        
-    </header> 
-
+    <script src={% static "js/main.js" %}></script>
 
     {% block cuerpo %} {% endblock cuerpo %}
-
+    
     <div class="caja_img_fondo">
-        <img src= {% static 'img/GSMO2.png' %} class="img_fondo">
+        <img src= {% static 'img/nutrisoft.png' %} class="img_fondo">
     </div>
 
     <footer>
-        <p>© NutriSoft 2022. Todos los Derechos Reservados.</p>
+        <p>© eNusystem 2022 | Software de Nutrición. Todos los Derechos Reservados.</p>
     </footer>
-    
-</body>
-</html>
+
+  </body>

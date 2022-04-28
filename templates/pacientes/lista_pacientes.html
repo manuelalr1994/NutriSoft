@@ -9,26 +9,23 @@
     <h1>Lista de Pacientes</h1>
 </div>
 
-<div>
+<div class="buscar_set_buscar">
     <form method="GET">
         <div>
             <input type="text" placeholder="Buscar Paciente" name="paciente_buscado">
-            <input type="submit" value="Buscar">
+            <input type="submit" class="btn_buscar" value="Buscar">
         </div>
     </form>
 </div>
 
-<div>
+<div class="buscar_set">
     <form method="POST">{% csrf_token %}
-        <div>
-            <input type="button" value="Agregar Nuevo" onclick="location.href='{% url 'pacientes:registro_pacientes' %}'">
-            <input type="submit" value="Eliminar" onclick="location.href='{% url 'pacientes:lista_pacientes' %}'">
-        </div>
 
-        <div>
-            <table>
+        <div class="overflow">
+            <table class="tabla_listas_ch">
                 <thead>
-                    <tr>
+                    <tr class="thead_set disable-select">
+                        <th>Seleccionar</th>
                         <th>Codigo</th>
                         <th>Nombre</th>
                         <th>Email</th>
@@ -55,6 +52,14 @@
                     </tbody>
                 {% endfor %}
             </table>
+        </div>
+
+        
+
+        <div class="btn_lista">
+            <p>*Seleccionar antes de Eliminar*</p>
+            <input type="button" value="Agregar Nuevo" onclick="location.href='{% url 'pacientes:registro_pacientes' %}'">
+            <input type="submit" value="Eliminar" onclick="location.href='{% url 'pacientes:lista_pacientes' %}'">
         </div>
     </form>
 </div>
