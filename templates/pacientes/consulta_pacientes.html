@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Registro del Paciente | NutriSoft {% endblock title %}
+{% block title %} Lista de Pacientes | NutriSoft {% endblock title %}
 
 {% block cuerpo %}
+
 
 <div class="lista_all">
     <div class="titulo_pagina">
@@ -15,7 +16,7 @@
         <input type="button" value="Regresar al Inicio" onclick="location.href='{% url 'pacientes:inicio' %}'">
     </div>
     
-    <div class="contenedorRegistro_empleados">
+    <div  class="contenedorRegistro_empleados">
         <div class="panel panel_default">
             <form method="POST">{% csrf_token %}
                 <div class="panel_default">
@@ -27,56 +28,49 @@
                 </div>
                 <div class="div_body">
                     <div class="colum_input">
-                        <label>Codigo:
-                            {{form.codigo}}
-                        </label>
+                        <label>Codigo:</label>
+                        <input type="number" value="{{object.codigo}}" class="input_registrar" disabled>
                     </div>
                     <div class="colum_input">
-                        <label>Nombre:
-                            {{form.nombre}}
-                        </label>
+                        <label>Nombre:</label>
+                        <input type="text" value="{{object.nombre}}" class="input_registrar" disabled>
                     </div>
                     <div class="colum_input">
-                        <label>Email:
-                            {{form.email}}
-                        </label>
+                        <label>Email:</label>
+                        <input type="text" value="{{object.email}}" class="input_registrar" disabled>
                     </div>
                 </div>
                 <div class="div_body">
                     <div class="colum_input">
-                        <label>Sexo:
-                            {{form.sexo}}
-                        </label>
+                        <label>Sexo:</label>
+                        <input type="text" value="{{object.sexo}}" class="input_registrar" disabled>
                     </div>
                     <div class="colum_input">
-                        <label>Fecha de Nacimiento:
-                            {{form.fecha_nacimiento}}
-                        </label>
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="text" value="{{object.fecha_nacimiento}}" class="input_registrar" disabled>
                     </div>
                     <div class="colum_input">
-                        <label>Escolaridad:
-                            {{form.escolaridad}}
-                        </label>
+                        <label>Escolaridad:</label>
+                        <input type="text" value="{{object.escolaridad}}" class="input_registrar" disabled>
                     </div>
                 </div>
                 <div class="div_body">
                     <div class="colum_input">
-                        <label>Tipo de Sangre:
-                            {{form.tipo_sangre}}
-                        </label>
+                        <label>Tipo de Sangre:</label>
+                        <input type="text" value="{{object.tipo_sangre}}" class="input_registrar" disabled>
                     </div>
                     <div class="colum_input">
-                        <label>Estado Civil:
-                            {{form.estado_civil}}
-                        </label>
+                        <label>Estado Civil:</label>
+                        <input type="text" value="{{object.estado_civil}}" class="input_registrar" disabled>
                     </div>
                 </div>
                 <div class="colum_input">
-                    <button class="btn_guardar" type="submit">Guardar</button>
+                    <button class="btn_guardar" type="button" disabled>Editar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
 {% endblock cuerpo %}

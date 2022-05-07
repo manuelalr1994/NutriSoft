@@ -24,6 +24,7 @@ class RegistradoPacientes(TemplateView):
 class ListaPacientes(ListView):
     model = Pacientes
     template_name = 'pacientes/lista_pacientes.html'
+    paginate_by = 4
     
 
     # Esta funcion genera el contexto (las variables que entran al template)
@@ -52,6 +53,6 @@ class ListaPacientes(ListView):
 
 
 
-class ConsultarPacientes(DetailView):
+class ConsultaPacientes(DetailView):
     model = Pacientes
     template_name = 'pacientes/consulta_pacientes.html'

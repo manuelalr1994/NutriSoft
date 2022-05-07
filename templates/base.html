@@ -16,33 +16,27 @@
 
 <body>
       
-    <div id="sidebar">
-      <div class="toggle-btn">
-        <span>&#9776</span>
-      </div>
-      <ul>
-        <li>
-          <img src={% static "img/logo.png" %} alt="Logo NutriSoft" class="logo">
-        </li>
-        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:inicio' %}'" class="disable-select">Inicio</a></li>
-        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:lista_pacientes' %}'" class="disable-select">Pacientes</a></li>
-        <li class="catalogs"><a onclick="location.href='{% url 'pacientes:registro_pacientes' %}'" class="disable-select">Registrar</a></li>
-        <li class="catalogs"><a href="#" class="disable-select">Cálculos</a></li>
-        <li class="catalogs"><a href="#" class="disable-select">Mis Dietas</a></li>
-        <li class="catalogs"><a href="#" class="disable-select">Salir</a></li>
-      </ul>
-    </div>
-
-    <script src={% static "js/main.js" %}></script>
+  <div class="sidebar_grid">
+    <ul>
+      <div class="logo" onclick="location.href='{% url 'pacientes:inicio' %}'"><li><img src={% static "img/logo.png" %} alt="Logo NutriSoft"></li><a class="logo_inicio">Inicio</a></div>
+      <div class="li_lista" onclick="location.href='{% url 'pacientes:lista_pacientes' %}'"><li><a>Pacientes</a></li></div>
+      <div class="li_lista" onclick="location.href='{% url 'pacientes:registro_pacientes' %}'">Registrar</div>
+      <div class="li_lista" onclick="location.href='#'">Cálculos</div>
+      <div class="li_lista" onclick="location.href='#'">Mis Dietas</div>
+      <div class="li_lista" onclick="location.href='#'">Salir</div>
+    </ul>
 
     {% block cuerpo %} {% endblock cuerpo %}
-    
-    <div class="caja_img_fondo">
-        <img src= {% static 'img/nutrisoft.png' %} class="img_fondo">
-    </div>
 
-    <footer>
-        <p>© eNusystem 2022 | Software de Nutrición. Todos los Derechos Reservados.</p>
-    </footer>
+  </div>
+
+  
+  <div class="caja_img_fondo">
+      <img src= {% static 'img/nutrisoft.png' %} class="img_fondo">
+  </div>
+
+  <footer>
+      <p>© eNusystem 2022 | Software de Nutrición. Todos los Derechos Reservados.</p>
+  </footer>
 
   </body>

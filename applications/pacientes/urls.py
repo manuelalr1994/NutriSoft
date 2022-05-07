@@ -11,4 +11,5 @@ urlpatterns = [
     path('registro-pacientes/', RegistrarPacientes.as_view(), name='registro_pacientes'),
     path('registrado-pacientes/', RegistradoPacientes.as_view(), name='registrado_pacientes'),
     path('lista-pacientes/', ListaPacientes.as_view(), name='lista_pacientes'),
+    path('consulta-pacientes/<int:pk>', ConsultaPacientes.as_view(), name='consulta_pacientes'),
 ]
