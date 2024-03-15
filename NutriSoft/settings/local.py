@@ -14,7 +14,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_nutrisoft',
         'USER': 'postgres',
-        'PASSWORD': 'leonleon1911',
+        'PASSWORD': 'lema50411',
         'HOST': 'localhost',
         'PORT': '5432',
     }
