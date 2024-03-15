@@ -6,6 +6,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from unipath import Path
 BASE_DIR = Path(__file__).ancestor(3)
+STATIC_ROOT = BASE_DIR.child('staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
