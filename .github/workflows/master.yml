@@ -36,8 +36,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Whoami
-        run: |
-          sshpass -p 'gOT140\\(&' ssh -o StrictHostKeyChecking=no kleviclient@192.168.100.150 whoami
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.LOCALSERVER_HOST }}
+          username: ${{ secrets.LOCALSERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: whoami
+        
 
       - name: Set up Django
         run: |
