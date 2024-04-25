@@ -35,14 +35,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Whoami
-        uses: appleboy/ssh-action@master
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          host: ${{ secrets.LOCALSERVER_HOST }}
-          username: ${{ secrets.LOCALSERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: whoami
-        
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Start EC2 instance
+        run: aws ec2 start-instances --instance-ids i-0114bc09f68df7cef
 
       - name: Set up Django
         run: |
