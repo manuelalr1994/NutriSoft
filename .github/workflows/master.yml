@@ -2,11 +2,11 @@ name: nutrisoft-test
 
 on:
   pull_request:
-    branches:
-      - kakuyo
-      - miguel
-
-  workflow_dispatch:
+    types:
+      - closed
+    # branches:
+    #   - kakuyo
+    #   - miguel
 
 jobs:
   test:
@@ -24,6 +24,11 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      
       - name: Checkout code
         uses: actions/checkout@v3
 
