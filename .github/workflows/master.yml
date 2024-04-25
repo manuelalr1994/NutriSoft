@@ -1,8 +1,9 @@
 name: nutrisoft-test
 
 on:
-  push:
-    branches: ["master"]
+  pull_request:
+    branches:
+      - master
 
   workflow_dispatch:
 
@@ -34,16 +35,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
+        
+      - name: Test EC2 (for miguel branch)
+        if: github.event.pull_request.head.ref == 'miguel'
+        uses: appleboy/ssh-action@master
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          host: ${{ secrets.EC2_HOST_MIGUEL }}
+          username: ${{ secrets.EC2_USERNAME_MIGUEL }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_MIGUEL }}
+          script: |
+            touch /home/ubuntu/miguel.txt
 
-      - name: Start EC2 instance
-        run: aws ec2 start-instances --instance-ids i-0114bc09f68df7cef
+      - name: Test EC2 (for master branch)
+        if: github.event.pull_request.head.ref == 'master'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST_MASTER }}
+          username: ${{ secrets.EC2_USERNAME_MASTER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_MASTER }}
+          script: |
+            touch /home/ubuntu/master.txt
 
       - name: Set up Django
         run: |
