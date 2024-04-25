@@ -59,7 +59,7 @@ jobs:
           script: whoami
         
       - name: Test EC2 (for miguel branch)
-        if: github.event.pull_request.head.ref == 'miguel'
+        if: github.event.pull_request.head.base_ref == 'miguel'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST_MIGUEL }}
@@ -69,7 +69,7 @@ jobs:
             touch /home/ubuntu/miguel.txt
 
       - name: Test EC2 (for kakuyo branch)
-        if: github.event.pull_request.head.ref == 'kakuyo'
+        if: github.event.pull_request.head.base_ref == 'kakuyo'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST_KAKUYO }}
