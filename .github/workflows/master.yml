@@ -2,11 +2,11 @@ name: nutrisoft-test
 
 on:
   pull_request:
-    branches:
-      - kakuyo
-      - miguel
-
-  workflow_dispatch:
+    types:
+      - closed
+    # branches:
+    #   - kakuyo
+    #   - miguel
 
 jobs:
   test:
@@ -24,6 +24,11 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -54,7 +59,7 @@ jobs:
           script: whoami
         
       - name: Test EC2 (for miguel branch)
-        if: github.event.pull_request.head.ref == 'miguel'
+        if: github.event.pull_request.base.ref == 'miguel'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST_MIGUEL }}
@@ -64,7 +69,7 @@ jobs:
             touch /home/ubuntu/miguel.txt
 
       - name: Test EC2 (for kakuyo branch)
-        if: github.event.pull_request.head.ref == 'kakuyo'
+        if: github.event.pull_request.base.ref == 'kakuyo'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST_KAKUYO }}
