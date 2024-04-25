@@ -3,7 +3,8 @@ name: nutrisoft-test
 on:
   pull_request:
     branches:
-      - master
+      - kakuyo
+      - miguel
 
   workflow_dispatch:
 
@@ -35,24 +36,40 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Whoami
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST_MIGUEL }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: whoami
+
+      - name: Whoami
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST_KAKUYO }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: whoami
         
       - name: Test EC2 (for miguel branch)
         if: github.event.pull_request.head.ref == 'miguel'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST_MIGUEL }}
-          username: ${{ secrets.EC2_USERNAME_MIGUEL }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_MIGUEL }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             touch /home/ubuntu/miguel.txt
 
       - name: Test EC2 (for master branch)
-        if: github.event.pull_request.head.ref == 'master'
+        if: github.event.pull_request.head.ref == 'kakuyo'
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_HOST_MASTER }}
-          username: ${{ secrets.EC2_USERNAME_MASTER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_MASTER }}
+          host: ${{ secrets.EC2_HOST_KAKUYO }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             touch /home/ubuntu/master.txt
 
