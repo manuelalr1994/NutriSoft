@@ -68,7 +68,7 @@ jobs:
           script: |
             touch /home/ubuntu/miguel.txt
 
-      - name: Test EC2 (for master branch)
+      - name: Test EC2 (for kakuyo branch)
         if: github.event.pull_request.head.ref == 'kakuyo'
         uses: appleboy/ssh-action@master
         with:
